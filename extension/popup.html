@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>eq-normalizer</title><link rel="stylesheet" href="popup.css"><script src="popup.js" defer></script></head>
+<body>
+  <main>
+    <header><img src="icon.svg" width="36" height="36" alt=""><div><h1>eq-normalizer</h1><form id="site-form"><input id="site" type="text" aria-label="Домен правила" aria-describedby="site-hint" autocomplete="off" spellcheck="false" required><button id="site-save" type="submit" disabled>Сохранить</button></form><p id="site-hint" class="hint">Домен и все его поддомены</p></div></header>
+    <p id="settings-error" role="alert" hidden></p>
+    <button id="toggle" type="button" aria-pressed="false" disabled>Включить на этом сайте</button>
+    <div class="range-label"><label for="range">Перепад громкости сцен</label><output id="range-value" for="range">≈ 6 дБ</output></div>
+    <input id="range" type="range" min="3" max="12" step="1" value="6" aria-describedby="range-hint">
+    <div class="range-ends"><span>Ровнее</span><span>Динамичнее</span></div>
+    <p id="range-hint" class="hint">Ориентир для активных сцен. Паузы остаются тихими.</p>
+    <section class="meters" aria-label="Уровни аудио">
+      <div id="gain-display" class="gain-display" data-state="idle">
+        <div class="gain-readout"><span id="gain-direction">Нет сигнала</span><span id="gain-value"></span></div>
+        <div class="gain-scale" aria-hidden="true"><span id="gain-fill"></span><span class="gain-zero"></span></div>
+        <div class="gain-axis" aria-hidden="true"><span>−30 дБ</span><span>0</span><span>+30 дБ</span></div>
+      </div>
+      <label for="input-meter">До <span id="input-value">нет сигнала</span></label><meter id="input-meter" min="-60" max="0" value="-60">Нет сигнала</meter>
+      <label for="output-meter">После <span id="output-value">нет сигнала</span></label><meter id="output-meter" min="-60" max="0" value="-60">Нет сигнала</meter>
+    </section>
+    <p id="status" role="status">Выравнивание выключено.</p>
+    <details id="timing-panel">
+      <summary>Attack, hold и release</summary>
+      <form id="timing-form">
+        <div class="timing-fields">
+          <label for="attack">Attack, мс<input id="attack" type="number" min="5" max="2000" step="1" required></label>
+          <label for="hold">Hold, мс<input id="hold" type="number" min="0" max="10000" step="1" required></label>
+          <label for="release">Release, мс<input id="release" type="number" min="50" max="10000" step="1" required></label>
+        </div>
+        <p class="hint">Attack замедляет приглушение. Hold удерживает усиление после сцены и в короткой паузе. Release замедляет восстановление.</p>
+        <button id="timing-save" type="submit" disabled>Применить время</button>
+      </form>
+      <p class="hint">Настройки сохраняются для домена. Звук обрабатывается на устройстве.</p>
+    </details>
+  </main>
+</body>
+</html>

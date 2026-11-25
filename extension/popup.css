@@ -1,0 +1,62 @@
+:root { color-scheme: light dark; font: 14px/1.45 system-ui, sans-serif; color: #1b2637; background: #f8fafc; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 340px; max-width: 100vw; max-height: 600px; overflow-y: auto; }
+main { padding: 18px; }
+header { display: flex; align-items: center; gap: 12px; }
+h1 { margin: 0; font-size: 21px; font-weight: 700; }
+p { margin: 0; }
+header > div { flex: 1; min-width: 0; }
+#site-form { display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+#site { width: 100%; min-width: 0; padding: 4px; border: 1px solid #a9b5c6; border-radius: 4px; color: inherit; background: transparent; font: inherit; font-size: 12px; }
+#site-save { width: auto; min-height: 28px; margin: 0; padding: 4px 6px; font-size: 11px; }
+#site-hint { margin: 3px 0 0; font-size: 11px; }
+button { width: 100%; min-height: 44px; margin-top: 14px; padding: 10px; border: 1px solid #245ca8; border-radius: 8px; background: #245ca8; color: white; font: inherit; font-weight: 600; cursor: pointer; }
+button[aria-pressed="true"] { background: transparent; color: #245ca8; }
+button:disabled { opacity: .55; cursor: default; }
+:focus-visible { outline: 3px solid #d87a00; outline-offset: 3px; }
+.range-label { margin-top: 24px; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.range-label label { font-size: 13px; }
+output { font-weight: 700; white-space: nowrap; }
+input[type="range"] { width: 100%; height: 30px; margin: 7px 0 0; accent-color: #245ca8; }
+.range-ends { display: flex; justify-content: space-between; }
+.range-ends, .hint { color: #536277; font-size: 12px; }
+.hint { margin-top: 8px; }
+.meters { margin-top: 22px; padding-top: 16px; border-top: 1px solid #d5dde8; }
+.gain-display { margin-bottom: 14px; --gain-color: #536277; }
+.gain-display[data-state="boost"] { --gain-color: #245ca8; }
+.gain-display[data-state="cut"] { --gain-color: #a34512; }
+.gain-readout { min-height: 27px; display: flex; justify-content: space-between; align-items: baseline; color: var(--gain-color); font-weight: 600; }
+#gain-value { font-size: 18px; font-variant-numeric: tabular-nums; }
+.gain-scale { height: 10px; margin-top: 5px; background: #dce3ec; position: relative; border-radius: 3px; }
+#gain-fill { position: absolute; height: 100%; left: 50%; width: 0; background: var(--gain-color); border-radius: 2px; transform-origin: left center; transition: width .15s linear; }
+.gain-display[data-state="idle"] #gain-fill { transition: none; }
+.gain-zero { position: absolute; width: 2px; height: 16px; left: calc(50% - 1px); top: -3px; background: #536277; }
+.gain-axis { display: flex; justify-content: space-between; margin-top: 5px; color: #536277; font-size: 11px; }
+.meters label { display: flex; justify-content: space-between; font-size: 12px; margin-top: 6px; }
+meter { width: 100%; height: 12px; display: block; }
+#status { margin: 12px 0; font-size: 13px; min-height: 38px; }
+details { border-top: 1px solid #d5dde8; padding-top: 10px; }
+summary { cursor: pointer; font-size: 13px; }
+.timing-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.timing-fields label { font-size: 12px; }
+.timing-fields input { width: 100%; min-height: 32px; margin-top: 4px; font: inherit; }
+#timing-save { min-height: 34px; font-size: 13px; }
+#settings-error { margin-top: 10px; color: #a34512; font-size: 12px; }
+@media (prefers-color-scheme: dark) {
+  :root { color: #edf2fa; background: #171e28; }
+  .range-ends, .hint { color: #b5c2d3; }
+  button { background: #8bbcf6; border-color: #8bbcf6; color: #142c4b; }
+  button[aria-pressed="true"] { color: #8bbcf6; }
+  input[type="range"] { accent-color: #8bbcf6; }
+  .meters, details { border-color: #39475a; }
+  .gain-display { --gain-color: #b5c2d3; }
+  .gain-display[data-state="boost"] { --gain-color: #8bbcf6; }
+  .gain-display[data-state="cut"] { --gain-color: #f4b76d; }
+  .gain-scale { background: #39475a; }
+  .gain-zero { background: #b5c2d3; }
+  .gain-axis { color: #b5c2d3; }
+  #settings-error { color: #f4b76d; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #gain-fill { transition: none; }
+}

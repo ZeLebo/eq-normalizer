@@ -1,0 +1,12 @@
+{
+  "name": "eq-normalizer",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "test:browser": "node scripts/browser-check.mjs",
+    "build": "python3 scripts/build.py"
+  }
+}
